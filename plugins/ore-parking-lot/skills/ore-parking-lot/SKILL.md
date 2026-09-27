@@ -6,17 +6,15 @@ disable-model-invocation: true
 
 Keep an ordered queue of parked thoughts in this conversation's context.
 
-**Add**: on invocation with content, append it to the queue verbatim, acknowledge in one line, then continue the answer already in progress unchanged.
+- **Add**: on invocation with content, append it to the queue verbatim, acknowledge in one line, then continue the answer already in progress unchanged.
+- **Raise**: once the topic in focus settles, bring up the oldest queued item yourself as the next topic and drop it from the queue.
+- **Remind**: while the queue is non-empty, end every response with a numbered list of it, in the language the user is using in the conversation (translate the heading accordingly), e.g.:
 
-**Raise**: once the topic in focus settles, bring up the oldest queued item yourself as the next topic and drop it from the queue.
+  ```
+  ---
+  Parked topics
+  1. <item>
+  2. <item>
+  ```
 
-**Remind**: while the queue is non-empty, end every response with a numbered list of it, in the language the user is using in the conversation (translate the heading accordingly), e.g.:
-
-```
----
-Parked topics
-1. <item>
-2. <item>
-```
-
-Each item keeps the number it was first shown with, even after another item is raised and removed (gaps are fine). Keep this list separate from any other pending-items list this session tracks (e.g. a judgment-pending list) — they mean different things.
+  Renumber the list from 1 each time you show it. Keep this list separate from any other pending-items list in the conversation — they track different things.

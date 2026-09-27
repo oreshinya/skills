@@ -1,0 +1,13 @@
+{
+  "name": "oreshinya",
+  "description": "Claude Code skills and agents",
+  "owner": {
+    "name": "oreshinya"
+  },
+  "plugins": [
+    {
+      "name": "ore-skills",
+      "source": "./plugins/ore-skills"
+    }
+  ]
+}

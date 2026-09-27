@@ -1,0 +1,11 @@
+{
+  "name": "ore-skills",
+  "description": "Claude Code skills and agents",
+  "author": {
+    "name": "oreshinya",
+    "url": "https://github.com/oreshinya"
+  },
+  "homepage": "https://github.com/oreshinya/skills",
+  "repository": "https://github.com/oreshinya/skills",
+  "license": "MIT"
+}

@@ -25,6 +25,7 @@ Each skill is its own plugin, so you can install only the ones you need.
 | `ore-grill` | Relentlessly interrogates you about a plan, decision, or idea | |
 | `ore-impl` | Turns a settled plan into an implementation | `implementer` |
 | `ore-parking-lot` | Parks a thought that's unrelated to what's currently being discussed and raises it later at a natural break | |
+| `ore-pr-triage` | Judges whether a PR needs careful human review, a quick skim, or can be skipped | |
 
 ## License
 

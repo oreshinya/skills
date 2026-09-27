@@ -28,6 +28,10 @@
     {
       "name": "ore-parking-lot",
       "source": "./plugins/ore-parking-lot"
+    },
+    {
+      "name": "ore-pr-triage",
+      "source": "./plugins/ore-pr-triage"
     }
   ]
 }

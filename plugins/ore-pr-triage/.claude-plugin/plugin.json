@@ -1,0 +1,11 @@
+{
+  "name": "ore-pr-triage",
+  "description": "Judges whether a PR needs careful human review",
+  "author": {
+    "name": "oreshinya",
+    "url": "https://github.com/oreshinya"
+  },
+  "homepage": "https://github.com/oreshinya/skills",
+  "repository": "https://github.com/oreshinya/skills",
+  "license": "MIT"
+}

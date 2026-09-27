@@ -1,0 +1,11 @@
+{
+  "name": "ore-grill",
+  "description": "Relentlessly interrogate the user about a plan, decision, or idea",
+  "author": {
+    "name": "oreshinya",
+    "url": "https://github.com/oreshinya"
+  },
+  "homepage": "https://github.com/oreshinya/skills",
+  "repository": "https://github.com/oreshinya/skills",
+  "license": "MIT"
+}

@@ -6,8 +6,24 @@
   },
   "plugins": [
     {
-      "name": "ore-skills",
-      "source": "./plugins/ore-skills"
+      "name": "ore-code-review",
+      "source": "./plugins/ore-code-review"
+    },
+    {
+      "name": "ore-deps",
+      "source": "./plugins/ore-deps"
+    },
+    {
+      "name": "ore-doc",
+      "source": "./plugins/ore-doc"
+    },
+    {
+      "name": "ore-grill",
+      "source": "./plugins/ore-grill"
+    },
+    {
+      "name": "ore-impl",
+      "source": "./plugins/ore-impl"
     }
   ]
 }

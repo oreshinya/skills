@@ -1,0 +1,11 @@
+{
+  "name": "ore-doc",
+  "description": "Write a settled plan out as a plain-text plan document",
+  "author": {
+    "name": "oreshinya",
+    "url": "https://github.com/oreshinya"
+  },
+  "homepage": "https://github.com/oreshinya/skills",
+  "repository": "https://github.com/oreshinya/skills",
+  "license": "MIT"
+}

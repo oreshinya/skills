@@ -11,26 +11,19 @@ Add this repository as a marketplace, then install the plugins you want:
 /plugin install <plugin>@oreshinya
 ```
 
-Installed skills and agents are available as `<plugin>:<name>`.
+Installed skills and agents are available as `<plugin>:<name>` (for example, `ore-code-review:bug-finder`).
 
 ## Plugins
 
-### ore-skills
+Each skill is its own plugin, so you can install only the ones you need.
 
-General-purpose workflow skills, plus the agents they depend on.
-
-| Skill | Description |
-| --- | --- |
-| `ore-code-review` | Runs problem-finding agents in parallel and reports the narrowed-down findings with suggested fixes |
-| `ore-deps` | Updates project dependencies to the latest stable versions |
-| `ore-doc` | Writes a settled plan out as a plain-text plan document |
-| `ore-grill` | Relentlessly interrogates you about a plan, decision, or idea |
-| `ore-impl` | Turns a settled plan into an implementation |
-
-| Agent | Used by |
-| --- | --- |
-| `bug-finder`, `complexity-issue-finder`, `rule-violation-finder`, `performance-issue-finder`, `security-issue-finder` | `ore-code-review` |
-| `implementer` | `ore-impl` |
+| Plugin | Description | Bundled agents |
+| --- | --- | --- |
+| `ore-code-review` | Runs problem-finding agents in parallel and reports the narrowed-down findings with suggested fixes | `bug-finder`, `complexity-issue-finder`, `rule-violation-finder`, `performance-issue-finder`, `security-issue-finder` |
+| `ore-deps` | Updates project dependencies to the latest stable versions | |
+| `ore-doc` | Writes a settled plan out as a plain-text plan document | |
+| `ore-grill` | Relentlessly interrogates you about a plan, decision, or idea | |
+| `ore-impl` | Turns a settled plan into an implementation | `implementer` |
 
 ## License
 

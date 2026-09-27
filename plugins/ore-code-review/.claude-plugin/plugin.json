@@ -1,6 +1,6 @@
 {
-  "name": "ore-skills",
-  "description": "Claude Code skills and agents",
+  "name": "ore-code-review",
+  "description": "Code review with parallel problem-finding agents",
   "author": {
     "name": "oreshinya",
     "url": "https://github.com/oreshinya"

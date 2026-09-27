@@ -1,0 +1,11 @@
+{
+  "name": "ore-parking-lot",
+  "description": "Park an off-topic thought during a conversation and raise it later at a natural break",
+  "author": {
+    "name": "oreshinya",
+    "url": "https://github.com/oreshinya"
+  },
+  "homepage": "https://github.com/oreshinya/skills",
+  "repository": "https://github.com/oreshinya/skills",
+  "license": "MIT"
+}

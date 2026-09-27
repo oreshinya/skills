@@ -24,6 +24,10 @@
     {
       "name": "ore-impl",
       "source": "./plugins/ore-impl"
+    },
+    {
+      "name": "ore-parking-lot",
+      "source": "./plugins/ore-parking-lot"
     }
   ]
 }

@@ -17,8 +17,20 @@ Installed skills and agents are available as `<plugin>:<name>`.
 
 ### ore-skills
 
+General-purpose workflow skills, plus the agents they depend on.
+
 | Skill | Description |
 | --- | --- |
+| `ore-code-review` | Runs problem-finding agents in parallel and reports the narrowed-down findings with suggested fixes |
+| `ore-deps` | Updates project dependencies to the latest stable versions |
+| `ore-doc` | Writes a settled plan out as a plain-text plan document |
+| `ore-grill` | Relentlessly interrogates you about a plan, decision, or idea |
+| `ore-impl` | Turns a settled plan into an implementation |
+
+| Agent | Used by |
+| --- | --- |
+| `bug-finder`, `complexity-issue-finder`, `rule-violation-finder`, `performance-issue-finder`, `security-issue-finder` | `ore-code-review` |
+| `implementer` | `ore-impl` |
 
 ## License
 

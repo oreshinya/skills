@@ -30,6 +30,10 @@
       "source": "./plugins/ore-parking-lot"
     },
     {
+      "name": "ore-pr-patrol",
+      "source": "./plugins/ore-pr-patrol"
+    },
+    {
       "name": "ore-pr-triage",
       "source": "./plugins/ore-pr-triage"
     }

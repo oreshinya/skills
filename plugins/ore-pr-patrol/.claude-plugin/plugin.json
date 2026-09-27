@@ -1,0 +1,12 @@
+{
+  "name": "ore-pr-patrol",
+  "description": "Patrols open PRs in configured repositories and posts code review and triage results to them",
+  "author": {
+    "name": "oreshinya",
+    "url": "https://github.com/oreshinya"
+  },
+  "homepage": "https://github.com/oreshinya/skills",
+  "repository": "https://github.com/oreshinya/skills",
+  "license": "MIT",
+  "dependencies": ["ore-code-review", "ore-pr-triage"]
+}

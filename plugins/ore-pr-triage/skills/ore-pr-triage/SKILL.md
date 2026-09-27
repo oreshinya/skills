@@ -1,6 +1,6 @@
 ---
 name: ore-pr-triage
-description: Judges whether a given PR needs careful human review, a quick skim, or can be skipped entirely. Trigger when the user asks you to triage a PR, e.g. "triage this PR" or "does this PR need review".
+description: Judges whether a given PR needs careful human review, a quick skim, or can be skipped entirely. Trigger when the user asks you to triage a PR, or right after a PR is created.
 ---
 
 - Resolve the PR reference from the user's input: a PR number, `owner/repo#number`, or a full URL. If only a number is given, resolve the owner/repo from the current directory's git remote.

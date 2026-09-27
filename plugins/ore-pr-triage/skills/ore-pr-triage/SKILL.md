@@ -14,5 +14,4 @@ description: Judges whether a given PR needs careful human review, a quick skim,
   - **skip**, unless the above applies, if the change is limited to:
     - Lockfile-only updates, generated code or mocks, pure renames, formatting-only changes, or typo/non-functional fixes.
   - Otherwise, weigh diff size, complexity, number of files/modules touched, and whether tests were added or updated to decide between **skim** and **must-review**. When uncertain, default to **must-review**.
-  - Never factor in who authored the change.
 - Report the verdict and the specific criteria that drove it, concisely.

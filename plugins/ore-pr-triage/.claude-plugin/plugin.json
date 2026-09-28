@@ -1,6 +1,6 @@
 {
   "name": "ore-pr-triage",
-  "description": "Judges whether a PR needs careful human review",
+  "description": "Judge whether a PR needs human review (review:must) or can skip it (review:skip)",
   "author": {
     "name": "oreshinya",
     "url": "https://github.com/oreshinya"

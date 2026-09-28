@@ -1,6 +1,6 @@
 {
   "name": "ore-pr-patrol",
-  "description": "Patrols open PRs in configured repositories and posts code review and triage results to them",
+  "description": "Review and triage PRs requesting your review in a GitHub org",
   "author": {
     "name": "oreshinya",
     "url": "https://github.com/oreshinya"

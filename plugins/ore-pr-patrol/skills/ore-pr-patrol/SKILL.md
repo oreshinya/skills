@@ -2,7 +2,6 @@
 name: ore-pr-patrol
 description: Reviews and triages the PRs in the given GitHub org that request your review. Meant to be run periodically, e.g. `/loop 30m /ore-pr-patrol:ore-pr-patrol <org>`.
 argument-hint: <org>
-disable-model-invocation: true
 ---
 
 - Take one org from the arguments: `$ARGUMENTS`. If none or more than one is given, stop with an error.

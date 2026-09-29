@@ -20,5 +20,6 @@ description: Judges whether a given PR needs human review (`review:must`) or can
   - Pure renames.
   - Regenerated code or mocks.
   - Library updates that change only dependency manifests and lockfiles.
+  - Deletions of code or assets that nothing references anymore, confirmed by searching the repository for their names and paths.
 - Classify every other PR as **review:must**. When uncertain, choose **review:must**.
 - Report the verdict and the criteria that drove it, concisely.

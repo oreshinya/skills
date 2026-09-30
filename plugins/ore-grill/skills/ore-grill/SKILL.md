@@ -5,7 +5,7 @@ description: Relentlessly interrogates the user about a plan, decision, or idea.
 
 Interview the user relentlessly until you reach a shared understanding. Treat the subject as a **design tree**: each decision branches into the next decisions that hang off it.
 
-Before the first round, investigate the subject: launch subagents in parallel to gather the facts obtainable from the environment (related code, files, existing mechanisms, and so on), and wait for their reports. Treat the existing design as a starting point, not a constraint: include reworking it where the goal justifies the cost.
+Before the first round, investigate the subject: launch subagents to gather the facts obtainable from the environment (related code, files, existing mechanisms, and so on), and wait for their reports. Treat the existing design as a starting point, not a constraint: include reworking it where the goal justifies the cost.
 
 Work through the tree in **rounds**. The **frontier** is the set of decisions whose prerequisite decisions are already settled — that is, the questions you can ask *right now* without guessing at answers you haven't heard yet. In each round, ask **at most 3 questions**, chosen from the current frontier. Prefer the questions whose answers change the shape of the tree the most (the most upstream, highest-impact ones). Number each question and attach your own recommended answer. Then wait for the user's answers before moving on to the next round.
 

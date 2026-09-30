@@ -16,10 +16,15 @@ description: Judges whether a given PR needs human review (`review:must`) or can
 - Otherwise, classify it as **review:skip** only if every change falls into one of these categories:
   - Documentation or comment-only changes, excluding directive comments.
   - Typo fixes in user-facing text.
-  - Formatting-only changes.
-  - Pure renames.
+  - Formatting-only changes, or mechanical lint and warning fixes that don't change behavior.
+  - Pure renames or moves.
   - Regenerated code or mocks.
-  - Library updates that change only dependency manifests and lockfiles.
+  - Library updates in dependency manifests and lockfiles.
+  - Minimal code changes required by library updates in the same PR, except for language or framework upgrades.
   - Deletions of code or assets that nothing references anymore, confirmed by searching the repository for their names and paths.
+  - Test changes that don't delete, skip, or weaken existing tests.
+  - Exact reverts of merged commits, confirmed with git, excluding reverts of reverts.
+  - Logging, metrics, or error-reporting changes that leave the rest of the behavior unchanged.
+  - Anything the target repository's CLAUDE.md marks as not needing human review.
 - Classify every other PR as **review:must**. When uncertain, choose **review:must**.
 - Report the verdict and the criteria that drove it, concisely.

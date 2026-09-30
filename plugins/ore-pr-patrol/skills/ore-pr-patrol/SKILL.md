@@ -23,15 +23,14 @@ argument-hint: <org>
   - Create a review:
     - Add each new finding (one not in your threads) as an inline comment on its line. For a line outside the diff, use the most related line in the diff and name the actual location.
     - Answer each reply on your threads that you disagree with and haven't answered yet, explaining why the finding still stands.
-    - In the body, write the verdict with the triage's reason in one line, the number of new findings, and the number of your unsettled threads.
+    - In the body, write the verdict with the triage's reason in one line, the number of new findings, and the number of your unsettled threads. If the verdict is **review:must**, also write that a human will review the PR.
+  - Set the verdict as a label on the PR. Remove the other verdict label if present.
   - If the verdict is **review:skip**, submit the review:
     - Approve if both hold:
       - There are no new findings.
       - All your threads are settled.
     - Otherwise, request changes.
-  - If the verdict is **review:must**, add to the body that a human will review the PR, and submit the review as a comment.
-    - Then request yourself as a reviewer again.
-  - Set the verdict as a label on the PR. Remove the other verdict label if present.
+  - If the verdict is **review:must**, submit the review as a comment, then request yourself as a reviewer again.
 - Finally, report to the user:
   - Which PRs were processed and their verdicts.
   - Which repositories lack the labels, asking the user to create them.

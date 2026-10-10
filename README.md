@@ -22,7 +22,7 @@ Each skill is its own plugin, so you can install only the ones you need.
 | `ore-code-review` | Runs problem-finding agents in parallel and reports the narrowed-down findings with suggested fixes | `bug-finder`, `complexity-issue-finder`, `rule-violation-finder`, `performance-issue-finder`, `security-issue-finder` |
 | `ore-deps` | Updates project dependencies to the latest stable versions | |
 | `ore-doc` | Writes a settled plan out as a plain-text work procedure | |
-| `ore-grill` | Relentlessly interrogates you about a plan, decision, or idea | |
+| `ore-grill` | Grills you relentlessly about a plan, decision, or idea | |
 | `ore-impl` | Turns a settled plan into an implementation | `implementer` |
 | `ore-parking-lot` | Parks a thought that's unrelated to what's currently being discussed and raises it later at a natural break | |
 | `ore-pr-patrol` | Reviews and triages PRs requesting your review in a GitHub org (depends on `ore-code-review` and `ore-pr-triage`) | |

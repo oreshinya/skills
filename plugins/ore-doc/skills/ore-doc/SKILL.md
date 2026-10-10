@@ -1,61 +1,52 @@
 ---
 name: ore-doc
-description: Writes out a settled plan as a plain-text plan document. Trigger when, after a plan or direction has been decided, the user asks for it to be written up, e.g. "put this into a plan" or "turn this into plan text".
+description: Writes out a settled plan as a plain-text work procedure. Trigger when, after a plan or direction has been decided, the user asks for it to be written up, e.g. "put this into a plan" or "turn this into plan text".
 ---
 
-Write the settled plan as text that an AI in a separate session, with no conversation context, can execute as-is, and that the user can read and verify without friction. Unless told otherwise, write it to `plan-<slug>.txt` directly under the current directory, and report the path. Write the plan in the language the user is using in the conversation, including the section labels (translate `Goal`, `Scope`, `Prerequisites`, and `Done criteria` accordingly).
+Write the settled plan as a work procedure to be executed by an AI in a separate session with no conversation context. Unless told otherwise, write it to `plan-<slug>.txt` directly under the current directory, and report the path.
 
-Write it as task-procedure notes, not as prose. Express structure with indentation only (2 spaces). Do not use bullet markers, Markdown, or code fences. Write headings and major items as noun phrases, steps as imperatives, and checks as statements that should hold (e.g. "X exists", "Y matches Z"). Keep technical terms in their original form, and write each command and path on a single line as-is. Keep lines short, and leave out anything self-evident. Do not write secrets.
+The document is one tree of steps: the root is the whole job, and the children of a step are how to carry it out, executed from top to bottom. Express structure with indentation (2 spaces) and blank lines only. Do not use bullet markers, Markdown, or code fences. Every line outside a `memo` is a step. A step is something the executor does, written as an imperative; write a command to run as-is. What the product should do is not a step. Write checks as steps too (e.g. "Confirm that X exists").
 
-Put `Goal`, `Scope`, `Prerequisites`, and `Done criteria` at the top. Steps are executed from top to bottom. Only blocks that may run in parallel go under `The following may run in parallel`.
+Whatever is not a step goes under a `memo` line placed as the first child of the step it applies to: the behavior to build, constraints, things not to do, design details such as code and values, file paths, which steps may run in parallel. Write only what the executor would get wrong without it.
 
-A line containing only `>` is a progress bookmark; everything above it is already done. When updating, do not delete items: append in the same format and move `>` to just below the finished items. Do not move it past a parallel block until the whole block is finished. For a check that did not pass, write the reason in a child line.
+Keep technical terms in their original form, and write each command and path on a single line as-is. Keep lines short, and leave out anything self-evident. Do not write secrets.
+
+A line containing only `>`, never indented, is the progress bookmark: it sits just below the last finished step, and starts as the first line.
+
+Write it in the language the user is using in the conversation; only the `memo` label stays as-is.
 
 Sample:
 
 ```
-Generate mp4 for video lessons and store a checksum
+Add an audit log for admin operations
+  memo
+    Scope is apps/admin
+    Do not store request bodies
 
-Goal
-  On upload, create an mp4 in addition to hls, so that integrity can be verified with a checksum
-
-Scope
-  example_app
-
-Prerequisites
-  Split mp4 generation and checksum into separate steps and separate PRs
-  This system is pre-release, so backward compatibility is not a concern
-
-Done criteria
-  <uuid>/video.mp4 exists in the bucket after upload
-  videos.checksum matches the md5 of the mp4
-
-step1 mp4 generation
-  Add mp4_status to videos
-    add_column :videos, :mp4_status, :string, null: false, default: "none"
-  app/jobs/video_transcode_job.rb
-    Generate the mp4 with ffmpeg after hls generation
-    Upload it to <uuid>/video.mp4 in the bucket
-  lint
-  Write tests
-    mp4_status becomes failed when mp4 generation fails
-  Verify behavior
-    video.mp4 exists in the bucket after upload
-    Uploading to the same video from another tab returns 409
-  PR
-
+  Add the audit_logs table
+    memo
+      t.references :admin, null: false
+      t.string :action, null: false
+      t.string :target, null: false
+      t.timestamps
+    Write the migration
+    bin/rails db:migrate
 >
-step2 checksum
-  Add checksum to videos
-    add_column :videos, :checksum, :string, limit: 32
-  Compute the md5 after mp4 generation and store it
-  The following may run in parallel
-    lint
-    Write tests
-      checksum matches the md5
-  Verify behavior
-    curl -O https://staging.example.com/<uuid>/video.mp4
-    md5 -q video.mp4
-      Matches the value stored in the db
-  PR
+
+  Implement operation recording
+    memo
+      app/controllers/admin/base_controller.rb
+      Record only create, update and destroy, not views
+      bin/rubocop and bin/rails test may run in parallel
+    Add code that writes one row to audit_logs after each operation
+    Write a test that updating a user adds one row to audit_logs
+    Write a test that opening a list adds no row to audit_logs
+    bin/rubocop
+    bin/rails test
+
+  Verify locally
+    Update a user in the admin screen
+    Confirm that audit_logs has a new row whose action is update
+
+  Create a PR
 ```

@@ -1,30 +1,22 @@
 ---
 name: ore-grill
-description: Relentlessly interrogates the user about a plan, decision, or idea. Trigger for stress-testing one's thinking, or on phrases like "grill me" or "poke holes in this".
+description: Grill the user relentlessly about a plan, decision, or idea. Use when the user wants to stress-test their thinking, or uses any 'grill' trigger phrases.
 ---
 
-Interview the user relentlessly until you reach a shared understanding. Treat the subject as a **design tree**: each decision branches into the next decisions that hang off it.
+Interview the user relentlessly until you reach a shared understanding. Map this as a **design tree**: every decision branches into the decisions that hang off it. Treat an existing design as a starting point, not a constraint: reworking it is on the table when the goal justifies the cost.
 
-Before the first round, investigate the subject: launch subagents to gather the facts obtainable from the environment (related code, files, existing mechanisms, and so on), and wait for their reports. Treat the existing design as a starting point, not a constraint: include reworking it where the goal justifies the cost.
+Work the tree in **rounds**. The **frontier** is every decision whose prerequisites are already settled: the questions you can ask _now_ without guessing at answers you haven't heard yet. Ask exactly one question per round: the frontier question whose answer reshapes the tree the most (the most upstream, highest-impact one). Number questions consecutively across rounds and give your recommended answer. Then wait for the user's answer before the next round.
 
-Work through the tree in **rounds**. The **frontier** is the set of decisions whose prerequisite decisions are already settled — that is, the questions you can ask *right now* without guessing at answers you haven't heard yet. In each round, ask **at most 3 questions**, chosen from the current frontier. Prefer the questions whose answers change the shape of the tree the most (the most upstream, highest-impact ones). Number each question and attach your own recommended answer. Then wait for the user's answers before moving on to the next round.
-
-Present each round in the following format.
+Format a round like so:
 
 ```
-❓ **Q1** - **<question title>**: <question body; may span multiple paragraphs and include options>
-
-➡️ <your recommended answer>
-
----
-
-❓ **Q2** - **<question title>**: <question body; may span multiple paragraphs and include options>
+❓ **Q<n>** - **<question title>**: <question body, might be multiple paragraphs, including multiple choices>
 
 ➡️ <your recommended answer>
 ```
 
-Every answer the user gives changes the shape of the tree. Once a decision is settled, the frontier moves outward and the questions that depended on it are unlocked. Recompute the frontier and ask the next round. A question whose answer depends on another question that is still unresolved within the same round belongs to a *later* round, not this one.
+Each round the user answers reshapes the tree: settled decisions push the frontier outward and unblock questions that depended on them. Recompute the frontier and ask the next round.
 
-Establishing **facts** is always your job, never the user's. If a later question needs a fact that the initial investigation did not cover and that can be obtained from the environment (the file system, tools, and so on), launch a subagent to look it up. Never ask the user something you can find out yourself. But do not stop to wait for it: an investigation in progress is an "unresolved prerequisite", and only the questions downstream of it need to wait for the subagent's report. Ask the rest of the frontier right away. **Decisions** belong to the user. Put every decision to the user and wait for the answer.
+Finding _facts_ is your job, never the user's. When a frontier question needs a fact you can look up, locally or online, dispatch a sub-agent to find it; don't ask the user for anything you could look up yourself. Don't block on it: a running exploration is an unsettled prerequisite, so only the questions downstream of it wait for the sub-agent to report; meanwhile ask a frontier question that doesn't depend on it. The exception is a fact a decision needs that only a heavy investigation can produce, e.g. one that can't proceed without the user's help or that requires building something: pause the grilling, propose the investigation, and once the user agrees, finish it before the next round. The _decisions_ are the user's: put each to them and wait.
 
-The session ends when the frontier is empty: every branch of the design tree has been walked and no assumption is left implicit. Do not move on to execution until the user confirms that a shared understanding has been reached.
+The session is done when the frontier is empty: every branch of the design tree visited, nothing left silently assumed. Do not act on it until the user confirms you have reached a shared understanding.

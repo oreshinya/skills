@@ -36,6 +36,10 @@
     {
       "name": "ore-pr-triage",
       "source": "./plugins/ore-pr-triage"
+    },
+    {
+      "name": "ore-setup-wt",
+      "source": "./plugins/ore-setup-wt"
     }
   ]
 }

@@ -27,6 +27,7 @@ Each skill is its own plugin, so you can install only the ones you need.
 | `ore-parking-lot` | Parks a thought that's unrelated to what's currently being discussed and raises it later at a natural break | |
 | `ore-pr-patrol` | Reviews and triages PRs requesting your review in a GitHub org (depends on `ore-code-review` and `ore-pr-triage`) | |
 | `ore-pr-triage` | Judges whether a PR needs human review (`review:must`) or can skip it (`review:skip`) | |
+| `ore-setup-wt` | Configures Worktrunk for a repository so that several worktrees can run at once without colliding (depends on the `worktrunk` plugin) | |
 
 ## License
 

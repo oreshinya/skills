@@ -4,6 +4,7 @@
   "owner": {
     "name": "oreshinya"
   },
+  "allowCrossMarketplaceDependenciesOn": ["worktrunk"],
   "plugins": [
     {
       "name": "ore-code-review",

@@ -15,7 +15,7 @@ Do not read the contents of secret files; their names are enough.
 1. Setup: the commands a fresh checkout needs before it runs, such as dependency install, database creation and migration.
 2. Local files: the gitignored files it needs that cannot be regenerated, such as env files, certificates and credentials.
 3. Entry points: the commands that need the middleware or the local files, such as the dev server, migrations, tests and a console.
-4. Collisions: everything two worktrees running at once would share, such as listen ports, URLs derived from those ports, database names, and queue or cache keys in middleware. For each, find the environment variable that overrides it. When there is none, the repository needs a change.
+4. Collisions: everything two worktrees running at once would share, such as listen ports, URLs derived from those ports, database names, and queue or cache keys in middleware. For each, find the environment variable that overrides it, and confirm in the code that reads it, framework code included, that setting it for the entry point changes that value and nothing else. When there is none, the repository needs a change.
 
 ## Decide
 
@@ -27,12 +27,13 @@ Do not read the contents of secret files; their names are enough.
 - Each worktree gets its own development database, and its own test database when tests would otherwise share one. On a database server, name it with `sanitize_db`, create it in `pre-start` and drop it in `pre-remove`.
 - A database starts empty and is built by the repository's own setup: schema load or migration, then seeds if any. Do not copy data from another worktree.
 - Copy only the local files found above. Reinstall dependencies instead of copying them. Do not copy `shell.nix`.
+- Include a copied file, hook command, alias, variable or repository change only when you can name what fails without it. Being gitignored does not make a file needed.
 - Label each hook command `<verb>-<object>`. The label is how a failed step is reported.
 - Where a colliding value has no override, change the repository so that an environment variable overrides it and the current value stays the default.
 
 ## Apply
 
-1. Present the hooks, the aliases and the repository changes. Continue only after the user confirms.
+1. Review the plan once on your own. Then present the hooks, the aliases and the repository changes, each with what fails without it. Continue only after the user confirms.
 2. Make the repository changes and leave them uncommitted.
 3. Write the hooks and aliases under `[projects."<identifier>"]` in the user config. `wt config show` prints the path of the user config and the identifier. Replace the section if it already exists, and leave the rest of the file as is.
 4. Preview the result with the dry-run options of `wt hook` and `wt config alias`.

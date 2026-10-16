@@ -7,4 +7,4 @@
 
 ## Showing diffs
 
-- When showing a diff, add a Japanese translation of the changed English text.
+- When showing a diff, translate its English text into Japanese and present it as a diff (keep the `+`/`-` lines).

@@ -1,6 +1,6 @@
 ---
 name: ore-impl
-description: Turns a settled plan or direction into an implementation. Trigger when, after a plan has been decided, the user asks for implementation, e.g. "implement it" or "go ahead".
+description: Turns a settled plan or direction into an implementation. Trigger when a settled plan is to be implemented: the user asks for it, e.g. "implement it" or "go ahead", or a skill or a loop hands you a plan to carry out.
 ---
 
 - Delegate edits that involve a substantial amount of file reading and writing or a lot of trial and error to the `ore-impl:implementer` subagent, and make edits you know will be small directly.

@@ -7,7 +7,7 @@ When writing up a settled plan, write it as a work procedure to be executed by a
 
 The document is one tree of steps: the root is the whole job, and the children of a step are how to carry it out, executed from top to bottom. Express structure with indentation (2 spaces) and blank lines only. Do not use bullet markers, Markdown, or code fences. Every line outside a `memo` is a step. A step is something the executor does, written as an imperative; write a command to run as-is. What the product should do is not a step. Write checks as steps too (e.g. "Confirm that X exists").
 
-Whatever is not a step goes under a `memo` line placed as the first child of the step it applies to: the behavior to build, constraints, things not to do, design details such as code and values, file paths, which steps may run in parallel. Write only what the executor would get wrong without it. Write a reason under a decision only when, without it, someone would likely take the decision for a mistake and undo it.
+Whatever is not a step goes under a `memo` line placed as the first child of the step it applies to: the behavior to build, constraints, things not to do, design details such as code and values, file paths, which steps may run in parallel. Write only what the executor would get wrong without it. Write the reason for a decision, however, only when without it nobody could tell from anywhere why it is so.
 
 Keep technical terms in their original form, and write each command and path on a single line as-is. Keep lines short, and leave out anything self-evident. Do not write secrets.
 
@@ -40,6 +40,7 @@ Add an audit log for admin operations
   Implement operation recording
     memo
       app/controllers/admin/base_controller.rb
+      paper_trail records each change to a record, not each admin operation, so do not use it
       Record only create, update and destroy, not views
       bin/rubocop and bin/rails test may run in parallel
     Add code that writes one row to audit_logs after each operation

@@ -16,6 +16,7 @@ Do not read the contents of secret files; their names are enough.
 2. Local files: the gitignored files it needs that cannot be regenerated, such as env files, certificates and credentials.
 3. Entry points: the commands that need the middleware or the local files, such as the dev server, migrations, tests and a console.
 4. Collisions: everything two worktrees running at once would share, such as listen ports, URLs derived from those ports, database names, and queue or cache keys in middleware. For each, find the environment variable that overrides it, and confirm in the code that reads it, framework code included, that setting it for the entry point changes that value and nothing else. When there is none, the repository needs a change.
+5. Repository-wide scanners: tools that walk the whole repository tree, such as file watchers, linters, test runners and container volume mounts. Check whether each one would pick up a directory under `.claude/worktrees/`.
 
 ## Decide
 
@@ -28,6 +29,7 @@ Do not read the contents of secret files; their names are enough.
 - A database starts empty and is built by the repository's own setup: schema load or migration, then seeds if any. Do not copy data from another worktree.
 - Copy only the local files found above. Reinstall dependencies instead of copying them. Do not copy `shell.nix`.
 - Include a copied file, hook command, alias, variable or repository change only when you can name what fails without it. Being gitignored does not make a file needed.
+- Place worktrees under `.claude/worktrees/` with `worktree-path = ".claude/worktrees/{{ branch | sanitize }}"`. Claude Code agents can enter an existing worktree only there. Choose it only when the scanners found above ignore that directory. Propose adding `.claude/worktrees/` to the user's global gitignore, not the repository's.
 - Label each hook command `<verb>-<object>`. The label is how a failed step is reported.
 - Where a colliding value has no override, change the repository so that an environment variable overrides it and the current value stays the default.
 
@@ -43,6 +45,7 @@ Shape of the result:
 
 ```toml
 [projects."github.com/acme/app"]
+worktree-path = ".claude/worktrees/{{ branch | sanitize }}"
 aliases.ore-rails = "{% if worktree_path != primary_worktree_path %}PORT={{ (repo ~ '-' ~ branch) | hash_port }} DB_NAME=app_dev_{{ branch | sanitize_db }} REDIS_NAMESPACE={{ branch | sanitize }} {% endif %}bin/rails {{ args }}"
 aliases.ore-rspec = "{% if worktree_path != primary_worktree_path %}DB_NAME=app_test_{{ branch | sanitize_db }} {% endif %}bin/rspec {{ args }}"
 

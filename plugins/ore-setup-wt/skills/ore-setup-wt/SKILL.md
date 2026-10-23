@@ -4,7 +4,7 @@ description: Configures Worktrunk (`wt`) for the current repository so that seve
 disable-model-invocation: true
 ---
 
-Make worktrees of this repository usable side by side: a new worktree is ready to run right after creation, and its dev processes do not collide with those of other worktrees. The result is a section for this repository in the Worktrunk user config. Change the repository only to make a colliding value overridable.
+Make worktrees of this repository usable side by side: a new worktree is ready to run right after creation, and its dev processes do not collide with those of other worktrees. The result is a section for this repository in the Worktrunk user config, plus a top-level `worktree-path` and a global gitignore entry when missing. Change the repository only to make a colliding value overridable or to keep a scanner out of worktrees.
 
 Load the `worktrunk:worktrunk` skill for config syntax before writing any config.
 
@@ -29,15 +29,15 @@ Do not read the contents of secret files; their names are enough.
 - A database starts empty and is built by the repository's own setup: schema load or migration, then seeds if any. Do not copy data from another worktree.
 - Copy only the local files found above. Reinstall dependencies instead of copying them. Do not copy `shell.nix`.
 - Include a copied file, hook command, alias, variable or repository change only when you can name what fails without it. Being gitignored does not make a file needed.
-- Place worktrees under `.claude/worktrees/` with `worktree-path = ".claude/worktrees/{{ branch | sanitize }}"`. Claude Code agents can enter an existing worktree only there. Choose it only when the scanners found above ignore that directory. Propose adding `.claude/worktrees/` to the user's global gitignore, not the repository's.
+- Worktrees go under the repository's `.claude/worktrees/`, inside the working directory of a Claude Code session started in the repository. If the top-level `worktree-path` of the user config does not already put them there, propose `worktree-path = "{{ repo_path }}/.claude/worktrees/{{ branch | sanitize }}"` at the top level. When a scanner found above would pick up that directory, exclude `.claude/worktrees/` in that tool's config. If `.claude/worktrees/` is not ignored, propose adding it to the user's global gitignore, not the repository's.
 - Label each hook command `<verb>-<object>`. The label is how a failed step is reported.
 - Where a colliding value has no override, change the repository so that an environment variable overrides it and the current value stays the default.
 
 ## Apply
 
-1. Review the plan once on your own. Then present the hooks, the aliases and the repository changes, each with what fails without it. Continue only after the user confirms.
+1. Review the plan once on your own. Then present the hooks, the aliases, the repository changes, and the top-level `worktree-path` and global gitignore entry if proposed, each with what fails without it. Continue only after the user confirms.
 2. Make the repository changes and leave them uncommitted.
-3. Write the hooks and aliases under `[projects."<identifier>"]` in the user config. `wt config show` prints the path of the user config and the identifier. Replace the section if it already exists, and leave the rest of the file as is.
+3. Write the hooks and aliases under `[projects."<identifier>"]` in the user config. `wt config show` prints the path of the user config and the identifier. Replace the section if it already exists, and leave the rest of the file as is. Add the top-level `worktree-path` and the global gitignore entry if confirmed.
 4. Preview the result with the dry-run options of `wt hook` and `wt config alias`.
 5. Tell the user that worktrees get the repository changes only once these are committed to the branch worktrees are created from.
 
@@ -45,7 +45,6 @@ Shape of the result:
 
 ```toml
 [projects."github.com/acme/app"]
-worktree-path = ".claude/worktrees/{{ branch | sanitize }}"
 aliases.ore-rails = "{% if worktree_path != primary_worktree_path %}PORT={{ (repo ~ '-' ~ branch) | hash_port }} DB_NAME=app_dev_{{ branch | sanitize_db }} REDIS_NAMESPACE={{ branch | sanitize }} {% endif %}bin/rails {{ args }}"
 aliases.ore-rspec = "{% if worktree_path != primary_worktree_path %}DB_NAME=app_test_{{ branch | sanitize_db }} {% endif %}bin/rspec {{ args }}"
 

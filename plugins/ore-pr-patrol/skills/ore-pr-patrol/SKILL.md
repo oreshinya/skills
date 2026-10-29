@@ -1,10 +1,10 @@
 ---
 name: ore-pr-patrol
 description: Reviews and triages the PRs in the given GitHub org that request your review. Meant to be run periodically, e.g. `/loop 30m /ore-pr-patrol:ore-pr-patrol <org>`.
-argument-hint: <org>
+argument-hint: <org> [reviewer...]
 ---
 
-- Take one org from the arguments: `$ARGUMENTS`. If none or more than one is given, stop with an error.
+- Take the arguments: `$ARGUMENTS`. The first is the org; the rest, if any, are GitHub users or teams (`org/team`), called "the reviewers". Without them, the reviewers are you. If no org is given, stop with an error.
 - Start everything you post on a PR, including the review body, with `🤖 AI review (ore-pr-patrol)`.
   - Call the threads you start this way "your threads".
 - List the PRs in the org that meet all of these:
@@ -30,7 +30,7 @@ argument-hint: <org>
       - There are no new findings.
       - All your threads are settled.
     - Otherwise, request changes.
-  - If the verdict is **review:must**, submit the review as a comment, then request yourself as a reviewer again.
+  - If the verdict is **review:must**, submit the review as a comment, then request review from the reviewers.
 - Finally, report to the user:
   - Which PRs were processed and their verdicts.
   - Which repositories lack the labels, asking the user to create them.

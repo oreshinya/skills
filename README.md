@@ -23,7 +23,7 @@ Each skill is its own plugin, so you can install only the ones you need.
 | `ore-deps` | Updates project dependencies to the latest stable versions | |
 | `ore-doc` | Writes, executes and edits plans as plain-text work procedures | |
 | `ore-grill` | Grills you relentlessly about a plan, decision, or idea | |
-| `ore-impl` | Turns a settled plan into an implementation | `implementer` |
+| `ore-impl` | Turns a settled plan into an implementation | |
 | `ore-parking-lot` | Parks a thought that's unrelated to what's currently being discussed and raises it later at a natural break | |
 | `ore-pr-patrol` | Reviews and triages PRs requesting your review in a GitHub org (depends on `ore-code-review` and `ore-pr-triage`) | |
 | `ore-pr-triage` | Judges whether a PR needs human review (`review:must`) or can skip it (`review:skip`) | |

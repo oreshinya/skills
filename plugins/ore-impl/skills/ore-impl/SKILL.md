@@ -1,6 +1,6 @@
 ---
 name: ore-impl
-description: Turns a settled plan or direction into an implementation. Trigger when a settled plan is to be implemented: the user asks for it, e.g. "implement it" or "go ahead", or a skill or a loop hands you a plan to carry out.
+description: Changes code or configuration. Trigger whenever you do implementation work, even within another skill's procedure.
 ---
 
 - Delegate edits that involve a substantial amount of file reading and writing or a lot of trial and error to a `general-purpose` subagent with `effort: medium`, and make edits you know will be small directly.

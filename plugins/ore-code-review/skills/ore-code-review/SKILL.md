@@ -1,6 +1,6 @@
 ---
 name: ore-code-review
-description: Reviews code by running custom problem-finding agents in parallel, then reports the narrowed-down findings with suggested fixes. Trigger when the user asks for a review, e.g. "review this" or "code review".
+description: Reviews code. Trigger when the user asks for a review, or before you push if you haven't run it in this session.
 ---
 
 - Follow the user's specification for the review target. If none is given, use the changes on the current branch (including uncommitted changes). If that is also empty, decide the scope from context.

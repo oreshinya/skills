@@ -19,7 +19,7 @@ Each skill is its own plugin, so you can install only the ones you need.
 
 | Plugin | Description | Bundled agents |
 | --- | --- | --- |
-| `ore-code-review` | Runs problem-finding agents in parallel and reports the narrowed-down findings with suggested fixes | `bug-finder`, `complexity-issue-finder`, `rule-violation-finder`, `performance-issue-finder`, `security-issue-finder` |
+| `ore-code-review` | Runs problem-finding agents in parallel and reports the narrowed-down findings with suggested fixes | `bug-finder`, `complexity-issue-finder`, `rule-violation-finder`, `performance-issue-finder`, `security-issue-finder`, `comment-finder` |
 | `ore-deps` | Updates project dependencies to the latest stable versions | |
 | `ore-doc` | Writes, executes and edits plans as plain-text work procedures | |
 | `ore-grill` | Grills you relentlessly about a plan, decision, or idea | |

@@ -12,4 +12,4 @@ Find the following in the specified review target.
   - Complexity out of proportion to its benefit: check whether the implementation chases an optimal result at the cost of complexity when a simpler approach would capture most of the gain
 - Code that is no longer used or needed but was left behind
 
-Do not think about fixes. Limit your output to identifying the problem and its cause.
+Show the simpler shape you have in mind.

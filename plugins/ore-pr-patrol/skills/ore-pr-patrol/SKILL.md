@@ -16,14 +16,17 @@ argument-hint: <org> [reviewer...]
 - For each remaining PR:
   - Run `ore-pr-triage:ore-pr-triage` on the PR. Call its result (`review:must` or `review:skip`) "the verdict".
   - Check out the PR in a temporary directory.
-  - If the PR already has your threads from an earlier run, treat each as settled if either holds:
+  - If the PR already has your threads from an earlier run, treat each as settled and resolve it if either holds:
     - The current code fixes it.
     - A reply explains why no fix is needed, and you agree.
   - Run `ore-code-review:ore-code-review` on the PR's changes in the checkout.
   - Create a review:
     - Add each new finding (one not in your threads) as an inline comment on its line. For a line outside the diff, use the most related line in the diff and name the actual location.
     - Answer each reply on your threads that you disagree with and haven't answered yet, explaining why the finding still stands.
-    - In the body, write the verdict with the triage's reason in one line, the number of new findings, and the number of your unsettled threads. If the verdict is **review:must**, also write that a human will review the PR.
+    - In the body, write the verdict with the triage's reason in one line, the number of new findings, and the number of your unsettled threads. Then write the matching text below, translated into the user's language with the bold UI labels kept as is:
+      - **review:must**: "The AI won't review this PR again, so please ask a human to review it. If the person you want isn't under **Reviewers** in the right sidebar, add them."
+      - **review:skip** with new findings or unsettled threads: "For each unresolved finding, fix the code or reply in its thread with why not. Once you've addressed all of them, click **Re-request review** next to `<account>` under **Reviewers** in the right sidebar to get another AI review."
+        - Replace `<account>` with the login of the account you post as.
   - Set the verdict as a label on the PR. Remove the other verdict label if present.
   - If the verdict is **review:skip**, submit the review:
     - Approve if both hold:

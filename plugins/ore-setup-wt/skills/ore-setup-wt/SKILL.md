@@ -6,6 +6,8 @@ disable-model-invocation: true
 
 Make worktrees of this repository usable side by side: a new worktree is ready to run right after creation, and its dev processes do not collide with those of other worktrees. The result is a section for this repository in the Worktrunk user config, plus a top-level `worktree-path` and a global gitignore entry when missing. Change the repository only to make a colliding value overridable or to keep a scanner out of worktrees.
 
+If Worktrunk is not installed, ask the user to install it before going further.
+
 Load the `worktrunk:worktrunk` skill for config syntax before writing any config.
 
 ## Investigate
@@ -40,6 +42,10 @@ Do not read the contents of secret files; their names are enough.
 3. Write the hooks and aliases under `[projects."<identifier>"]` in the user config. `wt config show` prints the path of the user config and the identifier. Replace the section if it already exists, and leave the rest of the file as is. Add the top-level `worktree-path` and the global gitignore entry if confirmed.
 4. Preview the result with the dry-run options of `wt hook` and `wt config alias`.
 5. Tell the user that worktrees get the repository changes only once these are committed to the branch worktrees are created from.
+6. Ask the user to add what is missing:
+   - When sandboxing is enabled, `wt ore-*` and `wt config alias show` in `sandbox.excludedCommands` of their Claude Code settings.
+   - In their CLAUDE.md, translated naturally into the user's language: "Run a command through its `ore-` alias when `wt config alias show` lists one, e.g. `wt ore-rails db:migrate`." When sandboxing is enabled, add "Run it as a standalone command, not combined with `cd`, `&&`, pipes or redirects."
+7. Tell the user which middleware to keep running outside Claude Code before creating a worktree, since all worktrees share it.
 
 Shape of the result:
 

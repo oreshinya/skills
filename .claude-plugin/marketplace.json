@@ -39,6 +39,10 @@
       "source": "./plugins/ore-pr-triage"
     },
     {
+      "name": "ore-security-triage",
+      "source": "./plugins/ore-security-triage"
+    },
+    {
       "name": "ore-setup-wt",
       "source": "./plugins/ore-setup-wt"
     }

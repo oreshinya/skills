@@ -1,0 +1,31 @@
+---
+name: ore-outline
+description: Rewrites a document or conversation into an outline, a nested list whose parents summarize their children. Trigger when asked to outline or structure a document.
+---
+
+- Rewrite the material into a tree for its reader and purpose, where each parent summarizes its children.
+  - Rules for the tree
+    - Put one element on each line.
+    - Write every action as the reader's own action.
+      - Write an action handed to someone else as "do X with Y", not "have Y do X".
+    - Make each parent a sentence that summarizes its children.
+    - Make the children of one parent answer the same question about it.
+      - Such a question is, for example, how, why, in which case, or what.
+    - Order the children of one parent by time, structure or importance.
+    - When information of different kinds falls under one parent, split it by kind under headings.
+      - Word each heading to say the kind of information and what it applies to.
+  - Steps to write the tree
+    - List the elements to convey, starting from the reader and purpose.
+      - Take only the content from the material (the original text or conversation), and decide its order and grouping anew from the reader and purpose.
+      - Change the material's wording only where it breaks the rules for the tree.
+    - Group the elements and add a parent for each group.
+      - Keep going until nothing more can be grouped.
+    - Keep only the elements the reader needs.
+      - Drop an element if the reader would understand and not go wrong without it.
+    - Unless told otherwise, write the tree as a nested `- ` list.
+      - Write headings as list items at every depth.
+      - Write a multi-line template or code as a child item that starts with a code block right after `- `.
+    - Check the written tree.
+      - Check against the material that nothing the reader needs is missing.
+      - Check against the material that nothing unneeded remains.
+      - Check that every line follows the rules for the tree.

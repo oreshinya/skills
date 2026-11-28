@@ -27,6 +27,10 @@
       "source": "./plugins/ore-impl"
     },
     {
+      "name": "ore-outline",
+      "source": "./plugins/ore-outline"
+    },
+    {
       "name": "ore-parking-lot",
       "source": "./plugins/ore-parking-lot"
     },
@@ -45,6 +49,10 @@
     {
       "name": "ore-setup-wt",
       "source": "./plugins/ore-setup-wt"
+    },
+    {
+      "name": "ore-skill-trim",
+      "source": "./plugins/ore-skill-trim"
     }
   ]
 }

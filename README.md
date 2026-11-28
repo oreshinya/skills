@@ -24,11 +24,13 @@ Each skill is its own plugin, so you can install only the ones you need.
 | `ore-doc` | Writes, executes and edits plans as plain-text work procedures | |
 | `ore-grill` | Grills you relentlessly about a plan, decision, or idea | |
 | `ore-impl` | Turns a settled plan into an implementation | |
+| `ore-outline` | Rewrites a document or conversation into an outline whose parents summarize their children | |
 | `ore-parking-lot` | Parks a thought that's unrelated to what's currently being discussed and raises it later at a natural break | |
 | `ore-pr-patrol` | Reviews and triages PRs requesting your review in a GitHub org (depends on `ore-code-review` and `ore-pr-triage`) | |
 | `ore-pr-triage` | Judges whether a PR needs human review (`review:must`) or can skip it (`review:skip`) | |
 | `ore-security-triage` | Fact-checks security review findings against the code and infrastructure, and sorts them by what a small team should do about them | |
 | `ore-setup-wt` | Configures Worktrunk for a repository so that several worktrees can run at once without colliding (depends on the `worktrunk` plugin) | |
+| `ore-skill-trim` | Trims a skill's body down to the instructions that change how an agent acts (depends on `ore-outline`) | |
 
 ## License
 

@@ -1,0 +1,11 @@
+{
+  "name": "ore-outline",
+  "description": "Rewrite a document or conversation into an outline whose parents summarize their children",
+  "author": {
+    "name": "oreshinya",
+    "url": "https://github.com/oreshinya"
+  },
+  "homepage": "https://github.com/oreshinya/skills",
+  "repository": "https://github.com/oreshinya/skills",
+  "license": "MIT"
+}

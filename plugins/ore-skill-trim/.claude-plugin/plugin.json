@@ -1,0 +1,12 @@
+{
+  "name": "ore-skill-trim",
+  "description": "Trim a skill's body down to the instructions that change how an agent acts",
+  "author": {
+    "name": "oreshinya",
+    "url": "https://github.com/oreshinya"
+  },
+  "homepage": "https://github.com/oreshinya/skills",
+  "repository": "https://github.com/oreshinya/skills",
+  "license": "MIT",
+  "dependencies": ["ore-outline"]
+}
